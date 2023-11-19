@@ -9,9 +9,10 @@ extension ContextExt on BuildContext {
 
   showRoundedModalBottomSheet({
     required Widget Function(BuildContext) builder,
+    bool isScrollControlled = false,
   }) {
     showModalBottomSheet(
-      isScrollControlled: true,
+      isScrollControlled: isScrollControlled,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
