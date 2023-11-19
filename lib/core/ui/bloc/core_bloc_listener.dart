@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_core/core/ui/bloc/state/simple_base_state.dart';
+import 'package:flutter_core/core/ui/bloc/state/base_state.dart';
 import 'package:flutter_core/core/utils/load_utils.dart';
 
 import 'core_bloc_consumer.dart';

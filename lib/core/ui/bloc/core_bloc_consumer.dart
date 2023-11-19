@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_core/core/data/network/network_exceptions.dart';
-import 'package:flutter_core/core/ui/bloc/state/simple_base_state.dart';
+import 'package:flutter_core/core/ui/bloc/state/base_state.dart';
 import 'package:flutter_core/core/ui/constants/constants.dart';
 import 'package:flutter_core/core/utils/load_utils.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_core/core/ui/bloc/state/simple_base_state.dart';
+import 'package:flutter_core/core/ui/bloc/state/base_state.dart';
 
 class CoreBlocBuilder<B extends StateStreamable<S>, S extends BaseState>
     extends BlocBuilder<B, S> {
