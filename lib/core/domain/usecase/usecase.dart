@@ -13,17 +13,7 @@ abstract class UseCase {
   }
 }
 
-extension LaunchExtension on Either<Failure, Object> {
-  launch<T>({
-    required Function(Future<T>) showResult,
-    required Function(Failure) showError,
-    required Function(bool) showLoading,
-  }) {
-    // todo
-  }
-}
-
-abstract class LaunchUseCase<Type> {
+abstract class LaunchUseCase<Type> extends UseCase {
   Future<Either<Failure, Type>> call();
 }
 

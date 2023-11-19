@@ -21,13 +21,13 @@ class PlatformUtils {
     versionName = packageInfo.version;
   }
 
-  static launchAppInStore() async {
-    if (Platform.isIOS) {
-      const url = 'https://apps.apple.com/app/id/123456789';
-      await url.launchURL();
-    } else if (Platform.isAndroid) {
-      const url = 'https://play.google.com/store/apps/details?id=com.arada.app';
-      await url.launchURL();
-    }
-   }
+  // static launchAppInStore() async {
+  //   if (Platform.isIOS) {
+  //     const url = 'https://apps.apple.com/app/id/123456789';
+  //     await url.launchURL();
+  //   } else if (Platform.isAndroid) {
+  //     const url = 'https://play.google.com/store/apps/details?id=com.arada.app';
+  //     await url.launchURL();
+  //   }
+  //  }
 }

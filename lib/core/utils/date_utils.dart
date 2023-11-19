@@ -1,4 +1,4 @@
-import 'package:intl/intl.dart';
+import "package:intl/intl.dart";
 
 class DatePatternConstants {
   static const dd_P_MM__HH_DP_mm = "dd.MM HH:mm";
@@ -40,46 +40,17 @@ class DatePatternConstants {
 
 extension DateExt on String {
   DateTime parseDate([String pattern = DatePatternConstants.dd_P_mm_P_yyyy]) {
-    var format = DateFormat(pattern);
+    final format = DateFormat(pattern);
     return format.parse(this);
   }
 
   String formatDateTo({
     required String formatPattern,
     required String parsePattern,
-}) {
-    var format = DateFormat(formatPattern).parse(this);
-    var parse = DateFormat(parsePattern).format(format);
+  }) {
+    final format = DateFormat(formatPattern).parse(this);
+    final parse = DateFormat(parsePattern).format(format);
 
     return parse;
-  }
-}
-
-extension DateTimeExt on DateTime {
-  String formatString() {
-    var stringDay = (day < 10) ? "0$day" : day.toString();
-    var stringMonth = (month < 10) ? "0$month" : month.toString();
-    return "$stringDay.$stringMonth.$year";
-  }
-
-  String getMonthName(String localCode, [bool withDeclination = false]) {
-    if (!withDeclination) return DateFormat.MMMM(localCode).format(this);
-    if (localCode != 'ru') return DateFormat.MMMM(localCode).format(this);
-
-    return switch (month) {
-      1 => "Января",
-      2 => "Февраля",
-      3 => "Марта",
-      4 => "Апреля",
-      5 => "Мая",
-      6 => "Июня",
-      7 => "Июля",
-      8 => "Августа",
-      9 => "Сентября",
-      10 => "Октября",
-      11 => "Ноября",
-      12 => "Декабря",
-      _ => "",
-    };
   }
 }
