@@ -5,12 +5,14 @@ class BaseState<T> {
   final Failure? error;
   final StateStatus status;
   final bool showLoader;
+  final dynamic value;
 
   const BaseState._({
     this.result,
     this.error,
     this.status = StateStatus.initial,
     this.showLoader = false,
+    this.value,
   });
 
   BaseState.initial() : this._(status: StateStatus.initial);
@@ -33,7 +35,11 @@ class BaseState<T> {
           result: result,
         );
 
-  BaseState.success() : this._(status: StateStatus.success);
+  BaseState.success([dynamic value])
+      : this._(
+          status: StateStatus.success,
+          value: value,
+        );
 }
 
 enum StateStatus { initial, loading, error, loaded, success }

@@ -78,12 +78,14 @@ class NetworkExceptions {
   Response? response;
   ErrorMessage? networkErrors;
   bool showMainError = false;
+  String error;
 
   NetworkExceptions({
     this.statusCode = -3,
     this.response,
     this.title = '',
     this.message = '',
+    this.error = CoreConstants.empty,
     this.showMainError = false,
   }) {
     switch (statusCode) {
@@ -130,6 +132,7 @@ class NetworkExceptions {
       default:
         title = "Ошибка";
         message = _parseErrorMessage(response);
+        error = _parseError(response);
         break;
     }
   }
@@ -147,6 +150,17 @@ class NetworkExceptions {
           'Ошибка сервера';
     } catch (e) {
       _localError = 'Ошибка сервера';
+    }
+    return _localError;
+  }
+
+  String _parseError(Response? response) {
+    String _localError = CoreConstants.empty;
+    try {
+      networkErrors = ErrorMessage.fromJson(response?.data);
+      _localError = networkErrors?.error ?? "server_error";
+    } catch (e) {
+      _localError = "server_error";
     }
     return _localError;
   }
