@@ -5,36 +5,36 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/dataSource/security_data_source.dart';
 import '../data/dataSource/shared_pref_manager.dart';
 
-final di = GetIt.instance;
+final getIt = GetIt.instance;
 
 injectCore() async {
   var prefs = SharedPrefManager().sharedPreferences ??
       await SharedPreferences.getInstance();
 
-  di.registerFactory<SharedPreferences>(() => prefs);
-  di.registerFactory(
+  getIt.registerFactory<SharedPreferences>(() => prefs);
+  getIt.registerFactory(
     () => SecurityDataSource(sharedPreferences: prefs),
   );
 
-  di.registerFactory(
-    () => CoreGetAccessTokenUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreGetAccessTokenUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => CoreSaveTokenUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreSaveTokenUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => CoreClearTokenUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreClearTokenUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => SaveLanguageCodeUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => SaveLanguageCodeUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => CoreClearAuthDataUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreClearAuthDataUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => CoreSavePhoneNumberUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreSavePhoneNumberUseCase(securityDataSource: getIt.get()),
   );
-  di.registerFactory(
-    () => CoreGetPhoneNumberUseCase(securityDataSource: di.get()),
+  getIt.registerFactory(
+    () => CoreGetPhoneNumberUseCase(securityDataSource: getIt.get()),
   );
 }
