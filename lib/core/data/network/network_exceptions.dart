@@ -109,11 +109,6 @@ class NetworkExceptions {
         title = 'Ошибка';
         showMainError = false;
         break;
-      case 500:
-        message = 'Ошибка сервера';
-        title = 'Ошибка сервера';
-        showMainError = true;
-        break;
       case 501:
         message = 'Ошибка сервера';
         title = 'Ошибка сервера';
