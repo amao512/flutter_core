@@ -42,4 +42,4 @@ class BaseState<T> {
         );
 }
 
-enum StateStatus { initial, loading, error, loaded, success }
+enum StateStatus { initial, loading, error, loaded, success, testStatus }
