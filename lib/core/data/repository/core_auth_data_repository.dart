@@ -15,7 +15,7 @@ class CoreAuthDataRepository {
 
   void setRefreshToken(String token) => _dataSource.saveRefreshToken(token);
 
-  String getRefreshToken(String token) => _dataSource.getRefreshToken() ?? CoreConstants.empty;
+  String getRefreshToken() => _dataSource.getRefreshToken() ?? CoreConstants.empty;
 
   void clearRefreshToken() => _dataSource.clearRefreshToken();
 
