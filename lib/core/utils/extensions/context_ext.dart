@@ -11,6 +11,7 @@ extension ContextExt on BuildContext {
     required Widget Function(BuildContext) builder,
     bool isScrollControlled = false,
     Color backgroundColor = Colors.white,
+    bool isDismissible = true,
   }) {
     showModalBottomSheet(
       isScrollControlled: isScrollControlled,
@@ -25,6 +26,7 @@ extension ContextExt on BuildContext {
       builder: builder,
       useSafeArea: true,
       useRootNavigator: true,
+      isDismissible: isDismissible,
     );
   }
 }
