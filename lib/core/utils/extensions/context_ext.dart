@@ -10,6 +10,7 @@ extension ContextExt on BuildContext {
   showRoundedModalBottomSheet({
     required Widget Function(BuildContext) builder,
     bool isScrollControlled = false,
+    Color backgroundColor = Colors.white,
   }) {
     showModalBottomSheet(
       isScrollControlled: isScrollControlled,
@@ -19,7 +20,7 @@ extension ContextExt on BuildContext {
           topRight: Radius.circular(16),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       context: this,
       builder: builder,
       useSafeArea: true,
