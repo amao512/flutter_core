@@ -12,6 +12,7 @@ extension ContextExt on BuildContext {
     bool isScrollControlled = false,
     Color backgroundColor = Colors.white,
     bool isDismissible = true,
+    bool enableDrag = true,
   }) {
     showModalBottomSheet(
       isScrollControlled: isScrollControlled,
@@ -27,6 +28,7 @@ extension ContextExt on BuildContext {
       useSafeArea: true,
       useRootNavigator: true,
       isDismissible: isDismissible,
+      enableDrag: enableDrag,
     );
   }
 }
