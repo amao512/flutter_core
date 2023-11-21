@@ -1,5 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_core/core/data/models/result_api.dart';
 import 'package:flutter_core/core/data/network/network_exceptions.dart';
 import 'package:flutter_core/core/ui/bloc/state/base_state.dart';
 
@@ -8,26 +8,34 @@ class BaseCubit<T> extends Cubit<BaseState<T>> {
       : super(initialState ?? BaseState.initial());
 
   launch<R>(
-    Future<Either<Failure, R>> usecase, {
+    Future<ResultApi<R>> call, {
     required Function(R) onResult,
     Function(Failure)? onError,
+    bool showError = true,
+    bool showLoading = true,
   }) async {
-    emit(BaseState.loading(true));
-    final response = await usecase;
+    if (showLoading) {
+      emit(BaseState.loading(true));
+    }
 
-    response.fold(
-      (l) {
-        emit(BaseState.loading(false));
-        if (onError == null) {
-          emit(BaseState.error(l));
-        } else {
-          onError(l);
-        }
-      },
-      (r) {
-        emit(BaseState.loading(false));
-        onResult(r);
-      },
-    );
+    final response = await call;
+
+    if (showLoading) {
+      emit(BaseState.loading(false));
+    }
+
+    if (response.errors != null && response.errors?.isNotEmpty == true) {
+      if (showError) {
+        emit(BaseState.error(response.errors!.first));
+      }
+
+      if (onError != null) {
+        onError(response.errors!.first);
+      }
+    }
+
+    if (response.data != null) {
+      onResult(response.data as R);
+    }
   }
 }
