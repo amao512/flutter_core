@@ -43,7 +43,7 @@ class BaseState<T> extends Equatable {
         );
 
   @override
-  List<Object?> get props => [status];
+  List<Object?> get props => [status, result, showLoader, value, error];
 }
 
 enum StateStatus { initial, loading, error, loaded, success }
