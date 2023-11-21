@@ -1,22 +1,15 @@
-import 'package:dartz/dartz.dart';
-import 'package:flutter_core/core/data/network/network_exceptions.dart';
+import 'package:flutter_core/core/data/models/result_api.dart';
 
 abstract class UseCase {
-  launch<T>({
-    required Future<T> Function() block,
-    required Function(T) result,
-    required Function(Failure) error,
-  }) async {
-    var value = await block();
-
-    result(value);
+  ResultApi launch<T>(ResultApi? result, T Function() map) {
+    return ResultApi<T>(errors: result?.errors, data: map());
   }
 }
 
-abstract class LaunchUseCase<Type> extends UseCase {
-  Future<Either<Failure, Type>> call();
+abstract class LaunchUseCase<T> extends UseCase {
+  Future<ResultApi<T>> call();
 }
 
-abstract class LaunchUseCaseWithParam<Param, Type> extends UseCase {
-  Future<Either<Failure, Type>> call(Param param);
+abstract class LaunchUseCaseWithParam<Param, T> extends UseCase {
+  Future<ResultApi<T>> call(Param param);
 }
