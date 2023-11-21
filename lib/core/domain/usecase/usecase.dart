@@ -2,7 +2,7 @@ import 'package:flutter_core/core/data/models/result_api.dart';
 
 abstract class UseCase {
   ResultApi launch<T>(ResultApi? result, T Function() map) {
-    return ResultApi<T>(errors: result?.errors, data: map());
+    return ResultApi(errors: result?.errors, data: map());
   }
 }
 
